@@ -51,32 +51,40 @@ const REDIRECT_URI = process.env.REDIRECT_URI;
 
 const oAuth2Client = new OAuth2Client(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI);
 
-const getAccessToken = async () => {
-  try {
-    const code = localStorage.getItem("code");
-    const { tokens } = await oAuth2Client.getToken(code);
-    const refreshToken = tokens.refresh_token;
-    localStorage.setItem("refToken", refreshToken);
-  } catch (error) {
-    console.error("Error retrieving access token:", error);
-    throw error; // You can choose to throw the error or handle it differently
+const getAcceToken = async () => {
+  const code = localStorage.getItem("code");
+
+  if (!code) {
+    console.error("Authorization code is undefined");
+    return;
   }
+
+  const { tokens } = await oAuth2Client.getToken(code);
+  const refreshToken = tokens.refresh_token;
+  localStorage.setItem("refToken", refreshToken);
 };
 
 router.get("^/$|/index(.html)?", (req, res) => {
   try {
     var query = require("url").parse(req.url, true).query;
     var id = query.code;
-    localStorage.setItem("code", id);
-    getAccessToken();
 
-    console.log(id);
+    if (!id) {
+      console.error("Authorization code is missing in query parameters");
+      res.status(400).send("Bad Request");
+      return;
+    }
+
+    console.log("Authorization code:", id);
+    localStorage.setItem("code", id);
+    getAcceToken();
 
     res.sendFile(path.join(__dirname, "..", "views", "index.html"));
   } catch (error) {
     console.error("Error in route handler:", error);
-    res.status(500).send("Internal Server Error"); // Handle the error response accordingly
+    res.status(500).send("Internal Server Error");
   }
 });
+
 
 module.exports = router;
