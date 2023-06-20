@@ -10,7 +10,7 @@ router.post("/", async (req, res) => {
   console.log(url);
   console.log(req.body.user);
   console.log(req.body.pwd);
-  console.log(req.bodu.ADMIN);
+  console.log(process.env.ADMIN);
   if(req.body.user == process.env.ADMIN && req.body.pwd == process.env.PWD){
     console.log("Thay che match")
   }
