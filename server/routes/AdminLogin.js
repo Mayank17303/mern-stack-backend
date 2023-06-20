@@ -11,19 +11,19 @@ router.post("/", async (req, res) => {
   console.log(req.body.user);
   console.log(req.body.pwd);
   console.log(process.env.ADMIN);
-  console.log(process.env.PWD);
+  console.log(process.env.PASWD);
   if(req.body.user == process.env.ADMIN){
     console.log("Thay che match")
   }
-  if(req.body.pwd == process.env.PWD){
+  if(req.body.pwd == process.env.PASWD){
     console.log("Thay match")
   }
   console.log(typeof(process.env.ADMIN));
   console.log(typeof(req.body.user));
-  console.log(typeof(process.env.PWD));
+  console.log(typeof(process.env.PASWD));
   console.log(typeof(req.body.pwd));
  
-  if (req.body.user == process.env.ADMIN && req.body.pwd == process.env.PWD) {
+  if (req.body.user == process.env.ADMIN && req.body.pwd == process.env.PASWD) {
     const refreshToken = jwt.sign(
       { adminname: req.body.user },
       process.env.REFRESH_TOKEN_SECRET,
