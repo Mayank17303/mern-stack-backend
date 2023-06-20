@@ -11,11 +11,12 @@ router.post("/", async (req, res) => {
   console.log(req.body.user);
   console.log(req.body.pwd);
   console.log(process.env.ADMIN);
+  console.log(process.env.PWD);
   if(req.body.user == process.env.ADMIN){
     console.log("Thay che match")
   }
   if(req.body.pwd == process.env.PWD){
-    console.log("Thay che match")
+    console.log("Thay match")
   }
   console.log(typeof(process.env.ADMIN));
   console.log(typeof(req.body.user));
