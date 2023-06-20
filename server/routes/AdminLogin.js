@@ -8,6 +8,9 @@ var LocalStorage = require("node-localstorage").LocalStorage,
 router.post("/", async (req, res) => {
   var url = localStorage.getItem("authUrl");
   console.log(url);
+  console.log(req.body.user);
+  console.log(req.body.pwd);
+
   if (req.body.user == process.env.ADMIN && req.body.pwd == process.env.PWD) {
     const refreshToken = jwt.sign(
       { adminname: req.body.user },
