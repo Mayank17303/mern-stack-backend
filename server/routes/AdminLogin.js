@@ -16,7 +16,7 @@ router.post("/", async (req, res) => {
     );
     res.json({ refreshToken, url });
   } else {
-    res.send(400);
+    res.sendStatus(400);
   }
 });
 
