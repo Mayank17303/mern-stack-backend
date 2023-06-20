@@ -14,8 +14,13 @@ router.post("/", async (req, res) => {
   if(req.body.user == process.env.ADMIN){
     console.log("Thay che match")
   }
+  if(req.body.pwd == process.env.PWD){
+    console.log("Thay che match")
+  }
   console.log(typeof(process.env.ADMIN));
-  console.log(typeof(rew.body.user));
+  console.log(typeof(req.body.user));
+  console.log(typeof(process.env.PWD));
+  console.log(typeof(req.body.pwd));
  
   if (req.body.user == process.env.ADMIN && req.body.pwd == process.env.PWD) {
     const refreshToken = jwt.sign(
