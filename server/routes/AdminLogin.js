@@ -11,12 +11,12 @@ router.post("/", async (req, res) => {
   console.log(req.body.user);
   console.log(req.body.pwd);
   console.log(process.env.ADMIN);
-  if(req.body.user == process.env.ADMIN && req.body.pwd == process.env.PWD){
+  if(req.body.user == process.env.ADMIN){
     console.log("Thay che match")
   }
-  if(req.body.user ==- process.env.ADMIN && req.body.pwd == process.env.PWD){
-    console.log("Thay che match with 3 equals")
-  }
+  console.log(typeof(process.env.ADMIN));
+  console.log(typeof(rew.body.user));
+ 
   if (req.body.user == process.env.ADMIN && req.body.pwd == process.env.PWD) {
     const refreshToken = jwt.sign(
       { adminname: req.body.user },
