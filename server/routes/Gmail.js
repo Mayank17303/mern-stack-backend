@@ -43,10 +43,10 @@ class GmailAPI {
 
   getAcceToken = async () => {
     var data = qs.stringify({
-      client_id: process.env.CLIENT_ID;
+      client_id: process.env.CLIENT_ID,
         // "14248122809-605fcjnkelku24q276ds87nku3io9gef.apps.googleusercontent.com",
 
-      client_secret: process.env.CLIENT_SECRET;
+      client_secret: process.env.CLIENT_SECRET,
       // "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",
 
       refresh_token:
