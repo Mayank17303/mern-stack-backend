@@ -45,8 +45,10 @@ var LocalStorage = require("node-localstorage").LocalStorage,
 const { google } = require("googleapis");
 const { OAuth2Client } = require("google-auth-library");
 
-const CLIENT_ID = "14248122809-605fcjnkelku24q276ds87nku3io9gef.apps.googleusercontent.com";
-const CLIENT_SECRET = "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";
+const CLIENT_ID = process.env.CLIENT_ID;
+ // "14248122809-605fcjnkelku24q276ds87nku3io9gef.apps.googleusercontent.com";
+const CLIENT_SECRET = process.env.CLIENT_SECRET;
+ // "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";
 const REDIRECT_URI = process.env.REDIRECT_URI;
 
 const oAuth2Client = new OAuth2Client(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI);
